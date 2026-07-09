@@ -7,7 +7,7 @@
 - `shirafukayayoi/opencode-sidebar-subagents` の `dev` ブランチを使う。
 - OpenCode TUI の右サイドバーにサブエージェント状況を表示する。
 - このPCで使っている global OpenCode plugin と quota 表示設定を移行する。
-- skills の探索先は `G:\マイドライブ\I am you\Skills` だけにする。
+- skills の探索先は任意の1ディレクトリだけにする。
 - 起動が極端に遅くなっていないことを確認する。
 
 ## 対象リポジトリ
@@ -177,7 +177,7 @@ opencode plugin -g -f @slkiser/opencode-quota
   ],
   "skills": {
     "paths": [
-      "G:\\マイドライブ\\I am you\\Skills"
+      "<SKILLS_DIR>"
     ]
   },
   "permission": {
@@ -232,7 +232,7 @@ opencode plugin -g -f @slkiser/opencode-quota
 注意:
 
 - provider の API key、OAuth、MCP 認証情報はコピーしない。別PCで再ログインする。
-- `G:\マイドライブ\I am you\Skills` が存在しないPCでは、Google Drive のマウント先を同じにするか、このパスだけ移行先に合わせて変更する。
+- `<SKILLS_DIR>` は移行先PCの実際の skills ディレクトリに置き換える。Google Drive を使う場合も、公開手順書には個人用の実パスを書かない。
 
 ## 8. AGENTS.md を作る
 
@@ -369,5 +369,5 @@ opencode --version
 - `opencode --version`
 - `opencode debug startup` の実測時間
 - plugin 一覧
-- skills path が `G:\マイドライブ\I am you\Skills` だけになっていること
+- skills path が意図した1ディレクトリだけになっていること
 - 右サイドバーで quota バー表示と subagents 表示を確認したか
