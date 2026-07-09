@@ -3,6 +3,7 @@ import type { BuiltinTuiPlugin } from "../builtins"
 import { createMemo, For, Match, Show, Switch, createSignal } from "solid-js"
 
 const id = "internal:sidebar-mcp"
+const MAX_VISIBLE_MCP_SERVERS = 4
 
 function View(props: { api: TuiPluginApi }) {
   const [open, setOpen] = createSignal(true)
@@ -27,7 +28,7 @@ function View(props: { api: TuiPluginApi }) {
   }
 
   return (
-    <Show when={list().length > 0}>
+    <Show when={list().length > 0 && list().length <= MAX_VISIBLE_MCP_SERVERS}>
       <box>
         <box flexDirection="row" gap={1} onMouseDown={() => list().length > 2 && setOpen((x) => !x)}>
           <Show when={list().length > 2}>
@@ -80,7 +81,7 @@ function View(props: { api: TuiPluginApi }) {
 
 const tui: TuiPlugin = async (api) => {
   api.slots.register({
-    order: 200,
+    order: 900,
     slots: {
       sidebar_content() {
         return <View api={api} />
